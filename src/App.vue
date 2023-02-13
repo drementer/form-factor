@@ -1,7 +1,14 @@
 <template>
-  <div id="app">
+  <main id="app">
     <router-view />
-  </div>
+  </main>
 </template>
 
-<style></style>
+<style lang="scss">
+@import '@/assets/scss/main.scss';
+
+#app {
+	width: 100%;
+	height: 100%;
+}
+</style>
