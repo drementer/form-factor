@@ -1,0 +1,31 @@
+/**
+ * Print styles.
+ */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline !important;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')' !important;
+  }
+
+  /**
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^='#']::after,
+  a[href^='javascript:']::after {
+    content: '' !important;
+  }
+}
