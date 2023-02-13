@@ -1,11 +1,11 @@
 <template>
-  <div class="login">
+  <main class="login" main>
     <form action="/home" class="login__form form" form>
       <input type="text" value="drementer" required />
       <input type="password" value="drementer" required />
       <button>giriş yap</button>
     </form>
-  </div>
+  </main>
 </template>
 
 <style lang="scss">

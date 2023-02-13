@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <main class="home" main>
 		<Input value="test2" required="false" label="aaa"></Input>
-  </div>
+  </main>
 </template>
 
 <script>
