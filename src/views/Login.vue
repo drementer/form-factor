@@ -1,8 +1,22 @@
 <template>
   <main class="login" main>
     <form action="/home" class="login__form form" form>
-      <input type="text" value="drementer" required />
-      <input type="password" value="drementer" required />
+      <Input
+        type="text"
+        value="drementer"
+        label="Kullanıcı Adı"
+				info="Kullanıcı adınız"
+				error="Boş bırakılamaz"
+        required
+      ></Input>
+      <Input
+        type="password"
+        value="drementer"
+        label="Şifre"
+				info="Şifreniz"
+				error="Boş bırakılamaz"
+        required
+      ></Input>
       <button>giriş yap</button>
     </form>
   </main>
@@ -14,12 +28,17 @@
   justify-content: center;
   align-items: center;
 
-	height: 100%;
+  height: 100%;
 }
 </style>
 
 <script>
+import Input from '@/components/Input.vue';
+
 export default {
   name: 'Login',
+  components: {
+    Input,
+  },
 };
 </script>
