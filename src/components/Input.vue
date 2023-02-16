@@ -3,7 +3,7 @@
     <label class="input__label">
       <span>
         {{ label }}
-        <span class="-muted" v-if="required">Required</span>
+        <span class="-muted" v-if="mutedText">{{ mutedText }}</span>
       </span>
       <input
         class="input__core"
@@ -14,13 +14,15 @@
         :maxlength="maxLenght"
         :minlength="minLenght"
         :required="required"
-        @input="masks"
+        @input="validate"
         autocomplete="off"
         input
+        :only-number="onlyNumber"
+        :only-letter="onlyLetter"
       />
-      <span v-if="error" class="input__error">{{ error }}</span>
+      <span v-if="errorText" class="input__error">{{ errorText }}</span>
     </label>
-    <p v-if="info" class="input__info">{{ info }}</p>
+    <p v-if="infoText" class="input__info">{{ infoText }}</p>
   </div>
 </template>
 
@@ -55,6 +57,8 @@
     justify-content: center;
     align-content: flex-start;
     gap: 5px;
+
+		width: 100%;
   }
 
   &__core {
@@ -105,20 +109,26 @@ export default {
     placeholder: String,
     required: Boolean,
     label: String,
-    info: String,
-    error: String,
+    infoText: String,
+    errorText: String,
     maxLenght: Number,
     minLenght: Number,
+    onlyNumber: Boolean,
+    onlyLetter: Boolean,
+    mutedText: String,
   },
   methods: {
-    masks: function (e) {
+    validate: function (e) {
       let element = e.target;
       let value = element.value.trim();
+
+      let isOnylNumber = element.hasAttribute('only-number');
+      let isOnlyLetter = element.hasAttribute('only-letter');
       let isRequired = element.hasAttribute('required');
       let isNull = value == '';
-      let parentElement = this.$el;
 
-      this.parentElement = parentElement;
+      if (isOnylNumber) this.numberMask(element);
+      if (isOnlyLetter) this.letterMask(element);
 
       if (isRequired && isNull) {
         this.setError(true);
@@ -126,6 +136,12 @@ export default {
       }
 
       this.setError(false);
+    },
+    numberMask: function (element) {
+      element.value = element.value.replace(/[^\d]/g, '');
+    },
+    letterMask: function (element) {
+      element.value = element.value.replace(/[^a-zA-Z]/g, '');
     },
     setError: function (error = true) {
       let parentElement = this.$el;

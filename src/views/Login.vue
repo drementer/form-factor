@@ -5,16 +5,20 @@
         type="text"
         value="drementer"
         label="Kullanıcı Adı"
-				info="Kullanıcı adınız"
-				error="Boş bırakılamaz"
+        info-text="Kullanıcı adınız"
+        error-text="Boş bırakılamaz"
+        muted-text="required"
+        only-letter
         required
       ></Input>
       <Input
-        type="password"
+        type="text"
         value="drementer"
         label="Şifre"
-				info="Şifreniz"
-				error="Boş bırakılamaz"
+        info-text="Şifreniz"
+        error-text="Boş bırakılamaz"
+        muted-text="required"
+        only-number
         required
       ></Input>
       <button>giriş yap</button>
