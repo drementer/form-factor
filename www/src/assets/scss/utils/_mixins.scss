@@ -1,0 +1,114 @@
+/// Sets theme-specific style settings
+///
+/// @param {string} $theme [default] - Theme name
+///
+/// @example scss
+///   .foo {
+///      @include theme() {
+///        color: black;
+///     }
+///   }
+///
+/// @example css - Output Css
+///	  html[data-theme=default] .foo {
+///	    color: black;
+///	  }
+///
+@mixin theme($theme: 'default') {
+  @at-root html[data-theme='#{$theme}'] #{&} {
+    @content;
+  }
+}
+
+/// Determines the maximum number of lines of the element.
+/// If the maximum line is exceeded, it cuts off the extra lines
+/// and puts "..." at the end of the last line.
+///
+/// @param {number} $max-line [2] - Maximum number of rows
+///
+/// @example scss
+///  .foo {
+///    @include truncate();
+///  }
+///
+@mixin truncate($max-line: 2) {
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $max-line;
+  -webkit-box-orient: vertical;
+}
+
+/// It determines the maximum number of lines of the element.
+/// If the maximum line is exceeded, it cuts off the excess lines
+/// and makes the last line transparent with a linear gradient.
+///
+/// @param {number} $max-line [2] - Maximum number of rows
+/// @param {string} background-color [#fff] - Gradient color
+///
+@mixin gradient-truncate($max-line: 2, $background-color: #fff) {
+  $font-size: 1em;
+  $line-height: $font-size * $root-line-height;
+
+  overflow: hidden;
+  position: relative;
+  height: $max-line * $line-height;
+  line-height: $line-height;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    width: 75%;
+    height: $line-height;
+
+    background: linear-gradient(90deg, transparent, $background-color);
+  }
+}
+
+/// Sets the default animation settings for the element
+///
+/// @param {boolen} $backface [true] - Sets the backface-visibility property
+/// @param {number} $perspective [1000] - Sets the element's perspective property
+///
+@mixin animation($backface: true, $perspective: 1000) {
+  @if $backface {
+    backface-visibility: hidden;
+  }
+  perspective: $perspective;
+}
+
+/// @param {Bool} $self [false] - Whether or not to include current selector
+///
+/// @author Harry Roberts
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+///
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Shortcut to set element's width and height style
+///
+/// @param {number} $width - The width of the element
+/// @param {number} $height [$width] - The height of the element
+///
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}

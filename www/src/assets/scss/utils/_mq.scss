@@ -1,0 +1,158 @@
+////
+/// @group mq
+////
+
+/// @type map
+/// @require {function} px2em
+///
+$breakpoints: (
+  xs: px2em(360px),
+  sm: px2em(576px),
+  md: px2em(768px),
+  lg: px2em(992px),
+  xl: px2em(1200px),
+  ul: px2em(1400px),
+) !default;
+
+/// Gets the media value from '$breakpoints'
+///
+/// @access private
+///
+/// @require {variable} $breakpoints - Media sizes
+/// @param {string} $value - Value to be taken
+///
+/// @return {number} - Media value
+/// @throw `$value` does not exist in `$breakpoints`
+///
+@function get-breakpoint($value) {
+  @if map-has-key($breakpoints, $value) {
+    @return map-get($breakpoints, $value);
+  }
+
+  @error $value + " does not exist in `$breakpoints`";
+}
+
+/// The superpower of css @media queries.
+///
+/// @require {function} get-breakpoint - To pull the media value
+/// @require {variable} $breakpoints - Media Sizes
+///
+/// @param {number} $until [null] - Entered max-width value
+/// @param {number} $from [null] - Entered min-width value
+///
+@mixin mq($from: null, $until: null) {
+  $max-width: null;
+  $min-width: null;
+  $media-query: '';
+
+  @if $from {
+    @if type-of($from) == number {
+      $min-width: $from;
+
+      @if unitless($from) {
+        $min-width: $min-width + 'px';
+      }
+    } @else {
+      $min-width: #{get-breakpoint($from)};
+    }
+  }
+
+  @if $until {
+    @if type-of($until) == number {
+      $max-width: $until;
+
+      @if unitless($until) {
+        $max-width: $max-width + 'px';
+      }
+    } @else {
+      $max-width: #{get-breakpoint($until)};
+    }
+  }
+
+  @if $min-width and $max-width {
+    $media-query: '(min-width: #{$min-width}) and (max-width: #{$max-width})';
+  } @else if $min-width {
+    $media-query: '(min-width: #{$min-width})';
+  } @else if $max-width {
+    $media-query: '(max-width: #{$max-width})';
+  }
+
+  @media screen and #{$media-query} {
+    @content;
+  }
+}
+
+/// Shortcut for min-media query
+/// It is very similar to the default use of the 'media' mixin,
+/// but offers a more practical use.
+///
+/// @alias mq
+///
+/// @require {mixin} mq - Media query
+///
+/// @param {string | number} $value - min-width value
+///
+@mixin min-mq($value) {
+  @include mq($value, null) {
+    @content;
+  }
+}
+
+/// Shortcut for min-media query
+///
+/// @alias mq
+///
+/// @require {mixin} mq - Media query
+///
+/// @param {string | number} $value - max-width value
+///
+@mixin max-mq($value) {
+  @include mq(null, $value) {
+    @content;
+  }
+}
+
+/// Shortcut for range-media query.
+///
+/// @alias mq
+///
+/// @param {string | number} $until - max-width value
+/// @param {string | number} $from - min-width value
+/// @require {mixin} mq - Media query
+///
+@mixin range-mq($from, $until) {
+  @include mq($from, $until) {
+    @content;
+  }
+}
+
+/// @type boolen
+$show-breakpoints: false !default;
+
+@if $show-breakpoints {
+  body::after {
+    position: fixed;
+    z-index: 99;
+    right: 0;
+    top: 0;
+    padding: 0.5rem 1rem;
+    background-color: $white-3;
+    border: 1px solid $black;
+
+    $breakpoints: $breakpoints;
+
+    @each $breakpoint, $breakpoint-value in $boyutlar {
+      $element: $breakpoint;
+      $content: '#{$breakpoint}';
+
+      @if $breakpoint-value {
+        $element: $breakpoint-value;
+        $content: '#{$breakpoint}: >= #{$element}';
+      }
+
+      @include min-mq($element) {
+        content: '#{$content}';
+      }
+    }
+  }
+}
