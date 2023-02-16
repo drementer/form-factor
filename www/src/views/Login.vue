@@ -23,6 +23,7 @@
       ></Input>
       <button>giriş yap</button>
     </form>
+    <User />
   </main>
 </template>
 
@@ -38,11 +39,13 @@
 
 <script>
 import Input from '@/components/Input.vue';
+import User from '@/components/User.vue';
 
 export default {
   name: 'Login',
   components: {
     Input,
+		User
   },
 };
 </script>
