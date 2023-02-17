@@ -7,7 +7,6 @@
         label="Kullanıcı Adı"
         info-text="Kullanıcı adınız"
         error-text="Boş bırakılamaz"
-        muted-text="required"
         only-letter
         required
       ></Input>
@@ -17,13 +16,11 @@
         label="Şifre"
         info-text="Şifreniz"
         error-text="Boş bırakılamaz"
-        muted-text="required"
         only-number
         required
       ></Input>
       <button>giriş yap</button>
     </form>
-    <User />
   </main>
 </template>
 
@@ -39,13 +36,11 @@
 
 <script>
 import Input from '@/components/Input.vue';
-import User from '@/components/User.vue';
 
 export default {
   name: 'Login',
   components: {
-    Input,
-		User
+    Input
   },
 };
 </script>
