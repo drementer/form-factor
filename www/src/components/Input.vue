@@ -58,7 +58,7 @@
     align-content: flex-start;
     gap: 5px;
 
-		width: 100%;
+    width: 100%;
   }
 
   &__core {
