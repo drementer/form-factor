@@ -11,12 +11,11 @@
         required
       ></Input>
       <Input
-        type="text"
+        type="password"
         value="drementer"
         label="Şifre"
         info-text="Şifreniz"
         error-text="Boş bırakılamaz"
-        only-number
         required
       ></Input>
       <button>giriş yap</button>
