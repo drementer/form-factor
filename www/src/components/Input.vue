@@ -28,6 +28,7 @@
 
 <style lang="scss">
 .input {
+  $this: #{&};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,20 +36,12 @@
 
   padding: 0.5rem;
 
+  color: $white;
   font-size: 16px;
 
   .-muted {
     opacity: 0.5;
     font-size: 0.85em;
-  }
-
-  &.-error &__error {
-    display: block;
-  }
-
-  &.-error &__core {
-    color: red;
-    border-color: red;
   }
 
   &__label {
@@ -65,11 +58,34 @@
     margin: 0;
     padding: 0.5em 1em;
 
+    @at-root #{$this}.-error & {
+      color: red;
+      border-color: red;
+    }
+
+    color: inherit;
     font-size: 1.2em;
 
-    border: 1px solid rgba(black, 0.6);
+    background-color: rgba($dark-green, 0.3);
+
+    border: 1px solid rgba($light-green, 0.4);
     border-radius: 7px;
     outline: 0;
+
+    &:hover:not(:invalid) {
+      background-color: rgba($dark-green, 0.5);
+    }
+
+    &:focus:not(:invalid) {
+      border-color: $green;
+      background-color: rgba($dark-green, 0.5);
+    }
+
+    &:invalid {
+      color: red;
+      border-color: red;
+      background-color: rgba(red, 0.1);
+    }
   }
 
   &__error {
@@ -80,6 +96,10 @@
 
     color: red;
     font-size: 0.8em;
+
+    @at-root #{$this}.-error & {
+      display: block;
+    }
   }
 
   &__info {
