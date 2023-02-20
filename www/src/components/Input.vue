@@ -131,11 +131,11 @@ export default {
       if (isOnlyLetter) this.letterMask(element);
 
       if (isRequired && isNull) {
-        this.setError(true);
+        this.error(true);
         return;
       }
 
-      this.setError(false);
+      this.error(false);
     },
     numberMask: function (element) {
       element.value = element.value.replace(/[^\d]/g, '');
@@ -143,7 +143,7 @@ export default {
     letterMask: function (element) {
       element.value = element.value.replace(/[^a-zA-Z]/g, '');
     },
-    setError: function (error = true) {
+    error: function (error = true) {
       let parentElement = this.$el;
 
       if (error) {
