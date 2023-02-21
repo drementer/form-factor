@@ -140,7 +140,8 @@ export default {
   methods: {
     validate: function (e) {
       let element = e.target;
-      let value = element.value.trim();
+
+      element.value = element.value.replaceAll(' ', '');
 
       let isOnylNumber = element.hasAttribute('only-number');
       let isOnlyLetter = element.hasAttribute('only-letter');
