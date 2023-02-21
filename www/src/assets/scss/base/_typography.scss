@@ -29,10 +29,10 @@ $font-scales: (
 
 html {
   font-family: $root-font-family;
-  font-size: $root-font-size;
+  font-size: $root-font-size--mobile;
 
   @include mq(lg) {
-    font-size: $root-font-size--mobile;
+    font-size: $root-font-size;
   }
 }
 
