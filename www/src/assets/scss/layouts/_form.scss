@@ -1,0 +1,11 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1em;
+
+	&__item {
+		flex-grow: 1;
+		flex-basis: 0;
+	}
+}
