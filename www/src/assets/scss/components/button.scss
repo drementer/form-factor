@@ -1,0 +1,18 @@
+.button {
+  position: relative;
+
+  display: block;
+
+  margin: 0;
+  padding: 0.5em 1em;
+
+  width: 100%;
+
+  color: $dark;
+  font-size: 1rem;
+
+  border: 1px solid transparent;
+	border-radius: $border-radius;
+	background-color: $green;
+  outline: 0;
+}
