@@ -4,6 +4,9 @@
   align-items: stretch;
   gap: 1em;
 
+	width: 100%;
+	max-width: 22rem;
+
 	&__item {
 		flex-grow: 1;
 		flex-basis: 0;
