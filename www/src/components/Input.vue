@@ -146,7 +146,7 @@ export default {
       let isOnylNumber = element.hasAttribute('only-number');
       let isOnlyLetter = element.hasAttribute('only-letter');
       let isRequired = element.hasAttribute('required');
-      let isNull = value == '';
+      let isNull = element.value == '';
 
       if (isOnylNumber) this.numberMask(element);
       if (isOnlyLetter) this.letterMask(element);
