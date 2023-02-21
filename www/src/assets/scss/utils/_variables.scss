@@ -1,4 +1,11 @@
 // ------------------------- Color pallette ----------------------------
+$red: hsl(0, 100%, 50%);
+$bluish-green: hsl(191, 81%, 80%);
+$light-green: hsl(166, 82%, 50%);
+$green: hsl(152, 74%, 61%);
+$dark-green: hsl(165, 58%, 9%);
+$dark: hsl(0, 0%, 2%);
+
 $white: hsl(0, 0%, 100%) !default;
 $white--100: tint($white, 80%) !default;
 $white--200: tint($white, 60%) !default;
@@ -20,12 +27,6 @@ $black--600: shade($black, 20%) !default;
 $black--700: shade($black, 40%) !default;
 $black--800: shade($black, 60%) !default;
 $black--900: shade($black, 80%) !default;
-
-$light-green: hsl(166, 82%, 50%);
-$green: hsl(152, 74%, 61%);
-$light-blue: hsl(191, 81%, 80%);
-$dark-green: hsl(165, 58%, 9%);
-$dark: hsl(0, 0%, 2%);
 // ---------------------------------------------------------------------
 
 // ----------------- cubic-bezier timing functions ---------------------
