@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { getUsers, createUser } from '../services/index.js';
+import { getUsers, createUser } from '../service/index.js';
 
 export default {
   name: 'User',
