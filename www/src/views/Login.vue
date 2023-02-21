@@ -1,12 +1,11 @@
 <template>
   <main class="login" main>
-    <form action="/home" class="login__form form" form>
+    <form action="/home" class="form login__form" form>
       <Input
         type="text"
         value="drementer"
         label="Kullanıcı Adı"
-        info-text="Kullanıcı adınız"
-        error-text="Boş bırakılamaz"
+        error-text="Hatalı veya eksik girdiniz!"
         only-letter
         required
       ></Input>
@@ -14,8 +13,8 @@
         type="password"
         value="drementer"
         label="Şifre"
-        info-text="Şifreniz"
-        error-text="Boş bırakılamaz"
+        info-text="İpucu - Ben kimim?"
+        error-text="Hatalı veya eksik girdiniz!"
         required
       ></Input>
       <button>giriş yap</button>
