@@ -35,7 +35,7 @@
   justify-content: center;
   align-items: flex-start;
 
-  padding: 0.5em;
+  padding: 0;
 
   color: $white;
   font-size: 1rem;
@@ -65,28 +65,28 @@
     }
 
     color: inherit;
-    font-size: 1.2em;
+    font-size: 1em;
 
     background-color: rgba($dark-green, 0.3);
 
     border: 1px solid rgba($light-green, 0.4);
-    border-radius: 7px;
+    border-radius: $border-radius;
     outline: 0;
 
     &:hover:not(:invalid) {
       background-color: rgba($dark-green, 0.5);
     }
 
-    &:focus:not(:invalid) {
+    &:focus-visible:not(:invalid) {
       border-color: $green;
       background-color: rgba($dark-green, 0.5);
     }
 
-    &:invalid {
+/*     &:invalid:not(:focus) {
       color: red;
       border-color: red;
       background-color: rgba(red, 0.1);
-    }
+    } */
   }
 
   &__error {
