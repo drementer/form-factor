@@ -142,6 +142,7 @@ export default {
   methods: {
     validate: function (e) {
       let element = e.target;
+			let vm = this;
 
       element.value = element.value.replaceAll(' ', '');
 
@@ -150,15 +151,15 @@ export default {
       let isRequired = element.hasAttribute('required');
       let isNull = element.value == '';
 
-      if (isOnylNumber) this.numberMask(element);
-      if (isOnlyLetter) this.letterMask(element);
+      if (isOnylNumber) vm.numberMask(element);
+      if (isOnlyLetter) vm.letterMask(element);
 
       if (isRequired && isNull) {
-        this.error(true);
+        vm.error(true);
         return;
       }
 
-      this.error(false);
+      vm.error(false);
     },
     numberMask: function (element) {
       element.value = element.value.replace(/[^\d]/g, '');
@@ -167,14 +168,15 @@ export default {
       element.value = element.value.replace(/[^a-zA-Z]/g, '');
     },
     error: function (error = true) {
-      let parentElement = this.$el;
+			let vm = this;
+      let parentElement = vm.$el;
 
       if (error) {
-        parentElement.classList.add(this.errorClass);
+        parentElement.classList.add(vm.errorClass);
         return;
       }
 
-      parentElement.classList.remove(this.errorClass);
+      parentElement.classList.remove(vm.errorClass);
     },
   },
 };
