@@ -17,7 +17,7 @@
         error-text="Hatalı veya eksik girdiniz!"
         required
       ></Input>
-      <button>giriş yap</button>
+      <button class="button form__button" type="submit">giriş yap</button>
     </form>
   </main>
 </template>
