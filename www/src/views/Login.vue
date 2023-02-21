@@ -1,23 +1,23 @@
 <template>
   <main class="login" main>
     <form action="/home" class="form login__form" form>
-			<Input
-				class="form__item"
+      <Input
+        class="form__item"
         type="text"
         value="drementer"
         label="Kullanıcı Adı"
-        error-text="Hatalı veya eksik girdiniz!"
+        :error-text="errorText"
         only-letter
         required
       ></Input>
       <Input
-				class="form__item"
+        class="form__item"
         type="password"
         label="Şifre"
         info-text="İpucu - Ben kimim?"
-        error-text="Hatalı veya eksik girdiniz!"
+        :error-text="errorText"
         required
-				focus
+        focus
       ></Input>
       <button class="button form__button" type="submit">giriş yap</button>
     </form>
@@ -39,8 +39,13 @@ import Input from '@/components/Input.vue';
 
 export default {
   name: 'Login',
+  data: () => {
+    return {
+      errorText: 'Boş bırakılamaz.',
+    };
+  },
   components: {
-    Input
+    Input,
   },
 };
 </script>
