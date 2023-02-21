@@ -17,6 +17,7 @@
         @input="validate"
         autocomplete="off"
         input
+        :autofocus="focus"
         :only-number="onlyNumber"
         :only-letter="onlyLetter"
       />
@@ -136,6 +137,7 @@ export default {
     onlyNumber: Boolean,
     onlyLetter: Boolean,
     mutedText: String,
+    focus: Boolean,
   },
   methods: {
     validate: function (e) {
