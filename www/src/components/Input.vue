@@ -34,10 +34,10 @@
   justify-content: center;
   align-items: flex-start;
 
-  padding: 0.5rem;
+  padding: 0.5em;
 
   color: $white;
-  font-size: 16px;
+  font-size: 1rem;
 
   .-muted {
     opacity: 0.5;
