@@ -8,7 +8,7 @@ const port = 3080;
 const users = [];
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../www/dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 app.get('/api/users', (req, res) => {
   console.log('api/users called!');
@@ -22,7 +22,7 @@ app.post('/api/user', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../www/dist/index.html'));
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.listen(port, () => {
