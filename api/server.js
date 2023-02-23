@@ -19,10 +19,11 @@ app.get('/api/users', (req, res) => {
 app.get('/api/get-brands', (req, res) => {
   let brands = [];
   let root = './brands/';
+  let infoFile = '/info.json';
   let brandFolders = fs.readdirSync(root);
 
   brandFolders.forEach((folder) => {
-    let fileContent = fs.readFileSync(`${root}${folder}/brand.json`, 'utf8');
+    let fileContent = fs.readFileSync(`${root}${folder}${infoFile}`, 'utf8');
     brands.push(JSON.parse(fileContent));
   });
 
