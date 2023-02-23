@@ -1,22 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import Login from '../views/Login.vue';
+
+import Login from './login';
+import Home from './home';
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: '/',
-    name: 'login',
-    component: Login,
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: HomeView,
-  },
-];
+const routes = [...Login, ...Home];
 
 const router = new VueRouter({
   mode: 'history',
