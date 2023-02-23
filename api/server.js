@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -13,6 +14,19 @@ app.use(express.static(path.join(__dirname, '../dist')));
 app.get('/api/users', (req, res) => {
   console.log('api/users called!');
   res.json(users);
+});
+
+app.get('/api/get-brands', (req, res) => {
+  let brands = [];
+  let root = './brands/';
+  let brandFolders = fs.readdirSync(root);
+
+  brandFolders.forEach((folder) => {
+    let fileContent = fs.readFileSync(`${root}${folder}/brand.json`, 'utf8');
+    brands.push(JSON.parse(fileContent));
+  });
+
+  res.json(brands);
 });
 
 app.post('/api/user', (req, res) => {

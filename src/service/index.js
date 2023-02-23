@@ -10,4 +10,9 @@ const createUser = async (data) => {
   return response.data;
 };
 
-export { createUser, getUsers };
+const getBrands = async () => {
+  const response = await axios.get(`/api/get-brands`);
+  return response.data;
+};
+
+export { createUser, getUsers, getBrands };
