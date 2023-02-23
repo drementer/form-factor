@@ -24,5 +24,19 @@
     "prettier": "^2.4.1",
     "sass-loader": "^13.2.0",
     "vue-template-compiler": "^2.6.14"
-  }
+  },
+  "name": "form-factor",
+  "description": "",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drementer/form-factor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drementer/form-factor/issues"
+  },
+  "homepage": "https://github.com/drementer/form-factor#readme"
 }
