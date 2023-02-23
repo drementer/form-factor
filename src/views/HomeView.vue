@@ -14,24 +14,26 @@
 <script>
 import Input from '@/components/Input.vue';
 import BrandCard from '@/components/BrandCard.vue';
+import { getBrands } from '../service/index.js';
 
 export default {
   name: 'HomeView',
   data: () => {
     return {
-      brands: [
-        {
-					id: 1,
-          name: 'Katılımemeklilik',
-          image: 'katilimemeklilik-logo.png',
-          imageAlt: 'Katılımemeklilik logo',
-        },
-      ],
+      brands: [],
     };
   },
   components: {
     Input,
     BrandCard,
+  },
+  methods: {
+    getBrands() {
+      getBrands().then((res) => (this.brands = res));
+    },
+  },
+  mounted() {
+    this.getBrands();
   },
 };
 </script>
