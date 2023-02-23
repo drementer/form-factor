@@ -1,0 +1,29 @@
+.button {
+  cursor: pointer;
+
+  position: relative;
+
+  display: block;
+
+  margin: 0;
+  padding: 0.5em 1em;
+
+  width: 100%;
+
+  color: $dark;
+  font-size: 1rem;
+	text-transform: capitalize;
+
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  background-color: rgba($green, 0.9);
+  outline: 0;
+
+  &:hover {
+    background-color: rgba($green, 1);
+  }
+
+  &.-disable {
+    background-color: $dark-green;
+  }
+}
