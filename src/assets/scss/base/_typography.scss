@@ -38,7 +38,7 @@ html {
 
 @each $element, $font-value in $font-scales {
   #{$element} {
-    font-size: $font-value * 1rem;
+    font-size: $font-value * 1em;
   }
 }
 
