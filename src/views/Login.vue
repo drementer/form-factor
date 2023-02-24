@@ -10,7 +10,7 @@
         form-item
         only-letter
         required
-      ></Input>
+      />
       <Input
         class="form__item"
         type="password"
@@ -21,7 +21,7 @@
         form-item
         required
         focus
-      ></Input>
+      />
       <button class="button form__button" type="submit" form-button="submit">
         giriş yap
       </button>
