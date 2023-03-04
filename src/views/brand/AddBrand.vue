@@ -41,8 +41,7 @@ export default {
   name: 'AddBrand',
   data: () => {
     return {
-      errorText: 'Boş bırakılamaz.',
-      errorClass: '-error',
+      errorText: 'Boş bırakılamaz!',
     };
   },
   components: {

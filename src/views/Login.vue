@@ -47,40 +47,13 @@ export default {
   name: 'Login',
   data: () => {
     return {
-      errorText: 'Boş bırakılamaz.',
-      errorClass: '-error',
+      errorText: 'Boş bırakılamaz!',
     };
   },
   components: {
     Input,
     Form,
   },
-  methods: {
-    formValidate: function (e) {
-      const vm = this;
-      const form = e.target;
-      const formItems = form.querySelectorAll('[form-item]');
-
-      const errorClass = vm.errorClass;
-
-      let isItemsValid = false;
-      let isFormValid = false;
-      let status = false;
-
-      e.preventDefault();
-
-      isItemsValid = !Array.from(formItems).some((item) =>
-        item.classList.contains(errorClass)
-      );
-
-      isFormValid = form.checkValidity();
-
-      status = isItemsValid && isFormValid;
-
-      if (!status) return;
-
-      form.submit();
-    },
-  },
+  methods: {},
 };
 </script>
