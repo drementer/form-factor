@@ -3,10 +3,11 @@ import VueRouter from 'vue-router';
 
 import Login from './login';
 import Home from './home';
+import AddBrand from './add-brand';
 
 Vue.use(VueRouter);
 
-const routes = [...Login, ...Home];
+const routes = [...Login, ...Home, ...AddBrand];
 
 const router = new VueRouter({
   mode: 'history',
