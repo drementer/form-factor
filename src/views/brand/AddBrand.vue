@@ -1,5 +1,5 @@
 <template>
-  <main class="add-brand">
+  <section class="add-brand">
     <form
       action="/home"
       class="form add-brand__form"
@@ -21,7 +21,7 @@
         marka ekle
       </button>
     </form>
-  </main>
+  </section>
 </template>
 
 <style lang="scss">

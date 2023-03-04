@@ -1,5 +1,5 @@
 <template>
-  <div class="brands">
+  <section class="brands">
     <h1 class="brands__heading">Markalar</h1>
     <div class="brands__cards">
       <BrandCard
@@ -15,7 +15,7 @@
         Yeni Marka Ekle
       </router-link>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss">
