@@ -3,6 +3,7 @@ import Brand from './brand';
 
 export default {
   path: '/home',
+	name: 'home',
   redirect: {
     name: 'brands',
   },
