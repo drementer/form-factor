@@ -1,5 +1,5 @@
 <template>
-  <section class="brands">
+  <main class="brands">
     <h1 class="brands__heading">Markalar</h1>
 
     <div class="brands__cards">
@@ -20,8 +20,39 @@
         Yeni Marka Ekle
       </router-link>
     </div>
-  </section>
+  </main>
 </template>
+
+<script>
+import Input from '@/components/Input.vue';
+import BrandCard from '@/components/BrandCard.vue';
+import { getBrands } from '@/service/index.js';
+
+export default {
+  name: 'Brands',
+  data: () => {
+    return {
+      brands: null,
+      loadingText: 'Yükleniyor...',
+      brandsNotFound: 'Henüz hiç marka yok.',
+    };
+  },
+  components: {
+    Input,
+    BrandCard,
+  },
+  methods: {
+    getBrands() {
+      getBrands()
+        .then((res) => (this.brands = res))
+        .catch((err) => (this.brands = false));
+    },
+  },
+  mounted() {
+    this.getBrands();
+  },
+};
+</script>
 
 <style lang="scss">
 .brands {
@@ -55,34 +86,3 @@
   }
 }
 </style>
-
-<script>
-import Input from '@/components/Input.vue';
-import BrandCard from '@/components/BrandCard.vue';
-import { getBrands } from '@/service/index.js';
-
-export default {
-  name: 'Brands',
-  data: () => {
-    return {
-      brands: null,
-      loadingText: 'Yükleniyor...',
-      brandsNotFound: 'Henüz hiç marka yok.',
-    };
-  },
-  components: {
-    Input,
-    BrandCard,
-  },
-  methods: {
-    getBrands() {
-      getBrands()
-        .then((res) => (this.brands = res))
-        .catch((err) => (this.brands = false));
-    },
-  },
-  mounted() {
-    this.getBrands();
-  },
-};
-</script>

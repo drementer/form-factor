@@ -1,13 +1,31 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Login from './login';
-import Home from './home';
-import NotFound from './page-not-found';
-
 Vue.use(VueRouter);
 
-const routes = [...Login, ...Home, ...NotFound];
+import Empty from '@/views/Empty.vue';
+import Login from './login';
+import Brand from './brand';
+import Error from './error';
+
+const routes = [
+  {
+    path: '/',
+    redirect: {
+      name: 'login',
+    },
+  },
+  {
+    path: '/home',
+    redirect: {
+      name: 'brands',
+    },
+    component: Empty,
+    children: [...Brand],
+  },
+  ...Login,
+  ...Error,
+];
 
 const router = new VueRouter({
   mode: 'history',

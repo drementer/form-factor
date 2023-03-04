@@ -11,26 +11,6 @@
   </form>
 </template>
 
-<style lang="scss">
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 1em;
-
-  width: 100%;
-
-  @include mq(xs) {
-    width: 22rem;
-  }
-
-  &__item {
-    flex-grow: 1;
-    flex-basis: 0;
-  }
-}
-</style>
-
 <script>
 export default {
   name: 'Form',
@@ -72,3 +52,23 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1em;
+
+  width: 100%;
+
+  @include mq(xs) {
+    width: 22rem;
+  }
+
+  &__item {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+}
+</style>

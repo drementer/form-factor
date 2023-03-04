@@ -10,6 +10,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'Input',
+  data: () => {
+    return {};
+  },
+  props: {
+    image: String,
+    imageAlt: String,
+  },
+  methods: {},
+};
+</script>
+
 <style lang="scss">
 .brand-card {
   overflow: hidden;
@@ -41,17 +55,3 @@
   }
 }
 </style>
-
-<script>
-export default {
-  name: 'Input',
-  data: () => {
-    return {};
-  },
-  props: {
-    image: String,
-    imageAlt: String,
-  },
-  methods: {},
-};
-</script>

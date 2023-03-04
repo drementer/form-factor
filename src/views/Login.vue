@@ -29,16 +29,6 @@
   </main>
 </template>
 
-<style lang="scss">
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 100%;
-}
-</style>
-
 <script>
 import Form from '@/components/Form.vue';
 import Input from '@/components/Input.vue';
@@ -57,3 +47,13 @@ export default {
   methods: {},
 };
 </script>
+
+<style lang="scss">
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+</style>

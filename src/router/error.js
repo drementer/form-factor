@@ -1,9 +1,9 @@
-import view from '../views/404.vue';
+import view from '@/views/Error.vue';
 
 export default [
   {
     path: '*',
-    name: 'page-not-found',
+    name: 'error',
     component: view,
   },
 ];

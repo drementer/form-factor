@@ -1,5 +1,5 @@
 <template>
-  <section class="add-brand">
+  <main class="add-brand">
     <Form class="add-brand__form" enctype="multipart/form-data">
       <Input
         class="form__item"
@@ -7,10 +7,12 @@
         label="Marka İsmi"
         :error-text="errorText"
         form-item
+        focus
         only-letter
         required
       />
       <UploadInput
+        class="form__item"
         accept=".png,.webp,.jpg,.jpeg"
         label="Marka Logosu"
         required
@@ -19,18 +21,8 @@
         marka ekle
       </button>
     </Form>
-  </section>
+  </main>
 </template>
-
-<style lang="scss">
-.add-brand {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 100%;
-}
-</style>
 
 <script>
 import Form from '@/components/Form.vue';
@@ -53,3 +45,13 @@ export default {
   mounted() {},
 };
 </script>
+
+<style lang="scss">
+.add-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+</style>

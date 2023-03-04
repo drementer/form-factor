@@ -27,6 +27,76 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'Input',
+  data: () => {
+    return {
+      errorClass: '-error',
+    };
+  },
+  props: {
+    type: {
+      type: String,
+      default: 'text',
+    },
+    name: String,
+    value: String,
+    placeholder: String,
+    required: Boolean,
+    label: String,
+    infoText: String,
+    errorText: String,
+    maxLenght: Number,
+    minLenght: Number,
+    onlyNumber: Boolean,
+    onlyLetter: Boolean,
+    mutedText: String,
+    focus: Boolean,
+  },
+  methods: {
+    validate: function (e) {
+      let element = e.target;
+      let vm = this;
+
+      element.value = element.value.replaceAll(' ', '');
+
+      let isOnylNumber = element.hasAttribute('only-number');
+      let isOnlyLetter = element.hasAttribute('only-letter');
+      let isRequired = element.hasAttribute('required');
+      let isNull = element.value == '';
+
+      if (isOnylNumber) vm.numberMask(element);
+      if (isOnlyLetter) vm.letterMask(element);
+
+      if (isRequired && isNull) {
+        vm.error(true);
+        return;
+      }
+
+      vm.error(false);
+    },
+    numberMask: function (element) {
+      element.value = element.value.replace(/[^\d]/g, '');
+    },
+    letterMask: function (element) {
+      element.value = element.value.replace(/[^a-zA-Z]/g, '');
+    },
+    error: function (error = true) {
+      let vm = this;
+      let parentElement = vm.$el;
+
+      if (error) {
+        parentElement.classList.add(vm.errorClass);
+        return;
+      }
+
+      parentElement.classList.remove(vm.errorClass);
+    },
+  },
+};
+</script>
+
 <style lang="scss">
 .input {
   $this: #{&};
@@ -111,73 +181,3 @@
   }
 }
 </style>
-
-<script>
-export default {
-  name: 'Input',
-  data: () => {
-    return {
-      errorClass: '-error',
-    };
-  },
-  props: {
-    type: {
-      type: String,
-      default: 'text',
-    },
-    name: String,
-    value: String,
-    placeholder: String,
-    required: Boolean,
-    label: String,
-    infoText: String,
-    errorText: String,
-    maxLenght: Number,
-    minLenght: Number,
-    onlyNumber: Boolean,
-    onlyLetter: Boolean,
-    mutedText: String,
-    focus: Boolean,
-  },
-  methods: {
-    validate: function (e) {
-      let element = e.target;
-      let vm = this;
-
-      element.value = element.value.replaceAll(' ', '');
-
-      let isOnylNumber = element.hasAttribute('only-number');
-      let isOnlyLetter = element.hasAttribute('only-letter');
-      let isRequired = element.hasAttribute('required');
-      let isNull = element.value == '';
-
-      if (isOnylNumber) vm.numberMask(element);
-      if (isOnlyLetter) vm.letterMask(element);
-
-      if (isRequired && isNull) {
-        vm.error(true);
-        return;
-      }
-
-      vm.error(false);
-    },
-    numberMask: function (element) {
-      element.value = element.value.replace(/[^\d]/g, '');
-    },
-    letterMask: function (element) {
-      element.value = element.value.replace(/[^a-zA-Z]/g, '');
-    },
-    error: function (error = true) {
-      let vm = this;
-      let parentElement = vm.$el;
-
-      if (error) {
-        parentElement.classList.add(vm.errorClass);
-        return;
-      }
-
-      parentElement.classList.remove(vm.errorClass);
-    },
-  },
-};
-</script>

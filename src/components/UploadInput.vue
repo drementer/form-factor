@@ -7,36 +7,22 @@
       </span>
       <div class="input__core">
         <div class="button -fit" type="button" upload-button>Dosya Seç</div>
-        <span upload-file-text>Henüz seçilmedi</span>
+        <span upload-file-text>Seçilmedi</span>
       </div>
       <input
         class="input__core -hidden"
         name="files[]"
         type="file"
-				:required="required"
+        :required="required"
         :accept="accept"
         :multiple="multiple"
+        upload-input
       />
       <span v-if="errorText" class="input__error">{{ errorText }}</span>
     </label>
     <p v-if="infoText" class="input__info">{{ infoText }}</p>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.input {
-  &__core {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-
-    gap: 1em;
-
-    padding: 0.5em;
-  }
-}
-</style>
 
 <script>
 export default {
@@ -74,3 +60,18 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.input {
+  &__core {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 0.5em;
+
+    padding: 0.5em 1rem 0.5rem 0.5rem;
+  }
+}
+</style>

@@ -1,8 +1,8 @@
-import view from '../views/Login.vue';
+import view from '@/views/Login.vue';
 
 export default [
   {
-    path: '/',
+    path: '/login',
     name: 'login',
     component: view,
   },
