@@ -1,6 +1,6 @@
 <template>
   <main class="login" main>
-    <form action="/home" class="form login__form" @submit="formValidate" form>
+    <Form action="/home" class="login__form">
       <Input
         class="form__item"
         type="text"
@@ -25,7 +25,7 @@
       <button class="button form__button" type="submit" form-button="submit">
         giriş yap
       </button>
-    </form>
+    </Form>
   </main>
 </template>
 
@@ -40,6 +40,7 @@
 </style>
 
 <script>
+import Form from '@/components/Form.vue';
 import Input from '@/components/Input.vue';
 
 export default {
@@ -52,6 +53,7 @@ export default {
   },
   components: {
     Input,
+    Form,
   },
   methods: {
     formValidate: function (e) {

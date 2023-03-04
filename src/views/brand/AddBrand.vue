@@ -1,12 +1,6 @@
 <template>
   <section class="add-brand">
-    <form
-      action="/home"
-      class="form add-brand__form"
-      @submit="formValidate"
-      form
-			enctype="multipart/form-data"
-    >
+    <Form class="add-brand__form" enctype="multipart/form-data">
       <Input
         class="form__item"
         type="text"
@@ -16,11 +10,15 @@
         only-letter
         required
       />
-      <UploadInput accept=".png,.webp,.jpg,.jpeg" label="Marka Logosu" required />
+      <UploadInput
+        accept=".png,.webp,.jpg,.jpeg"
+        label="Marka Logosu"
+        required
+      />
       <button class="button form__button" type="submit" form-button="submit">
         marka ekle
       </button>
-    </form>
+    </Form>
   </section>
 </template>
 
@@ -35,6 +33,7 @@
 </style>
 
 <script>
+import Form from '@/components/Form.vue';
 import Input from '@/components/Input.vue';
 import UploadInput from '@/components/UploadInput.vue';
 
@@ -49,34 +48,9 @@ export default {
   components: {
     Input,
     UploadInput,
+    Form,
   },
-  methods: {
-    formValidate: function (e) {
-      const vm = this;
-      const form = e.target;
-      const formItems = form.querySelectorAll('[form-item]');
-
-      const errorClass = vm.errorClass;
-
-      let isItemsValid = false;
-      let isFormValid = false;
-      let status = false;
-
-      e.preventDefault();
-
-      isItemsValid = !Array.from(formItems).some((item) =>
-        item.classList.contains(errorClass)
-      );
-
-      isFormValid = form.checkValidity();
-
-      status = isItemsValid && isFormValid;
-
-      if (!status) return;
-
-      form.submit();
-    },
-  },
+  methods: {},
   mounted() {},
 };
 </script>
