@@ -1,7 +1,11 @@
 <template>
   <section class="brands">
     <h1 class="brands__heading">Markalar</h1>
+
     <div class="brands__cards">
+      <h3 v-if="brands == null">{{ loadingText }}</h3>
+      <h3 v-if="brands == false">{{ brandsNotFound }}</h3>
+
       <BrandCard
         v-for="brand in brands"
         class="brands__card"
@@ -10,6 +14,7 @@
         :image-alt="brand.imageAlt"
       />
     </div>
+
     <div class="brands__button">
       <router-link to="/brands/add-brand" class="brand__button button">
         Yeni Marka Ekle
@@ -58,7 +63,9 @@ export default {
   name: 'Brands',
   data: () => {
     return {
-      brands: [],
+      brands: null,
+      loadingText: 'Yükleniyor...',
+      brandsNotFound: 'Henüz hiç marka yok.',
     };
   },
   components: {
@@ -67,7 +74,9 @@ export default {
   },
   methods: {
     getBrands() {
-      getBrands().then((res) => (this.brands = res));
+      getBrands()
+        .then((res) => (this.brands = res))
+        .catch((err) => (this.brands = false));
     },
   },
   mounted() {
