@@ -1,5 +1,5 @@
 <template>
-  <div class="input">
+  <div class="input" :class="'-' + type">
     <label class="input__label">
       <span>
         {{ label }}
@@ -82,7 +82,7 @@
       background-color: rgba($dark-green, 0.5);
     }
 
-/*     &:invalid:not(:focus) {
+    /*     &:invalid:not(:focus) {
       color: red;
       border-color: red;
       background-color: rgba(red, 0.1);
@@ -142,7 +142,7 @@ export default {
   methods: {
     validate: function (e) {
       let element = e.target;
-			let vm = this;
+      let vm = this;
 
       element.value = element.value.replaceAll(' ', '');
 
@@ -168,7 +168,7 @@ export default {
       element.value = element.value.replace(/[^a-zA-Z]/g, '');
     },
     error: function (error = true) {
-			let vm = this;
+      let vm = this;
       let parentElement = vm.$el;
 
       if (error) {
