@@ -20,10 +20,12 @@
   width: 10em;
   height: 10em;
 
-  border: 3px solid $green;
+  border: 1px solid $green;
   border-radius: $border-radius;
 
   font-size: 1rem;
+
+  cursor: pointer;
 
   &:hover &__logo {
     transform: scale(1.05);
