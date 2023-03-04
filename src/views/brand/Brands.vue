@@ -31,6 +31,8 @@
   align-content: center;
   gap: 1em;
 
+  width: fit-content;
+
   color: $white;
   font-size: 1rem;
 
