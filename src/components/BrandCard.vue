@@ -4,6 +4,7 @@
       v-if="image"
       :src="require('@/assets/image/' + image)"
       :alt="imageAlt"
+      :title="imageAlt"
       class="brand-card__logo"
     />
   </div>
