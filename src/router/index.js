@@ -3,10 +3,11 @@ import VueRouter from 'vue-router';
 
 import Login from './login';
 import Home from './home';
+import NotFound from './page-not-found';
 
 Vue.use(VueRouter);
 
-const routes = [...Login, ...Home];
+const routes = [...Login, ...Home, ...NotFound];
 
 const router = new VueRouter({
   mode: 'history',
