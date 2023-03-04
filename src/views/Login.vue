@@ -14,7 +14,7 @@
       <Input
         class="form__item"
         type="password"
-				value="drementer"
+        value="drementer"
         label="Şifre"
         info-text="İpucu - Ben kimim?"
         :error-text="errorText"
