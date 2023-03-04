@@ -3,9 +3,8 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import Empty from '@/views/Empty.vue';
+import Home from './home';
 import Login from './login';
-import Brand from './brand';
 import Error from './error';
 
 const routes = [
@@ -15,16 +14,9 @@ const routes = [
       name: 'login',
     },
   },
-  {
-    path: '/home',
-    redirect: {
-      name: 'brands',
-    },
-    component: Empty,
-    children: [...Brand],
-  },
-  ...Login,
-  ...Error,
+  Home,
+  Login,
+  Error,
 ];
 
 const router = new VueRouter({
