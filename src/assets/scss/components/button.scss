@@ -11,10 +11,10 @@
   width: 100%;
 
   color: $dark;
-	text-align: center;
+  text-align: center;
   font-size: 1rem;
-	text-transform: capitalize;
-	text-decoration: none;
+  text-transform: capitalize;
+  text-decoration: none;
 
   border: 1px solid transparent;
   border-radius: $border-radius;
@@ -26,10 +26,11 @@
   }
 
   &.-disable {
+    pointer-events: none;
     background-color: $dark-green;
   }
 
-	&.-fit {
-		width: fit-content;
-	}
+  &.-fit {
+    width: fit-content;
+  }
 }
