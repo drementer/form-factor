@@ -28,4 +28,8 @@
   &.-disable {
     background-color: $dark-green;
   }
+
+	&.-fit {
+		width: fit-content;
+	}
 }
