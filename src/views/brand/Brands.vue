@@ -42,7 +42,7 @@ export default {
     BrandCard,
   },
   methods: {
-    getBrands() {
+    getBrands: function () {
       getBrands()
         .then((res) => (this.brands = res))
         .catch((err) => (this.brands = false));
