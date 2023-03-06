@@ -2,7 +2,6 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "webpack",
     "dev": "nodemon ./server.js localhost 3080"
   },
   "dependencies": {
