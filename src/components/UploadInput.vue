@@ -17,6 +17,7 @@
         :accept="accept"
         :multiple="multiple"
         upload-input
+        @change="getFiles"
       />
       <span v-if="errorText" class="input__error">{{ errorText }}</span>
     </label>
@@ -25,11 +26,14 @@
 </template>
 
 <script>
+import { uploadFiles } from '@/service/index.js';
+
 export default {
   name: 'UploadInput',
   data: () => {
     return {
       errorClass: '-error',
+      uploadedFiles: [],
     };
   },
   props: {
@@ -56,6 +60,40 @@ export default {
       }
 
       parentElement.classList.remove(vm.errorClass);
+    },
+    isFileExist: function (fileName) {
+      let vm = this;
+      let status = false;
+
+      status = vm.uploadedFiles.some((item) => item.originalname == fileName);
+      return status;
+    },
+    checkFileExtension: function (fileName) {
+      const acceptedFileFormats = new RegExp(
+        `^.*\.(doc|DOC|pdf|PDF|docx|DOCX|xls|XLS|xlsx|XLSX|txt|TXT)$`
+      );
+
+      return acceptedFileFormats.test(fileName);
+    },
+    getFiles: function (e) {
+      let vm = this;
+      let parentElement = vm.$el;
+      let element = e.target;
+      let files = Object.entries(element.files);
+
+      files.forEach((file) => {
+        file = file[1];
+
+        let fileName = file.name;
+        let isDublicate = vm.isFileExist(fileName);
+        let status = isDublicate;
+
+        if (status) return;
+
+        vm.uploadedFiles.push(file);
+      });
+
+      uploadFiles(vm.uploadedFiles).then((res) => (vm.uploadedFiles = []));
     },
   },
 };
