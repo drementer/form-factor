@@ -6,7 +6,14 @@
         <span class="-muted" v-if="mutedText">{{ mutedText }}</span>
       </span>
       <div class="input__core">
-        <div class="button -fit" type="button" upload-button>Dosya Seç</div>
+        <button
+          class="button -fit"
+          type="button"
+          @click="focusInput"
+          upload-button
+        >
+          Dosya Seç
+        </button>
         <span upload-file-text>Seçilmedi</span>
       </div>
       <input
@@ -60,6 +67,10 @@ export default {
       }
 
       parentElement.classList.remove(vm.errorClass);
+    },
+    focusInput: function () {
+      let uploadInput = document.querySelector('[upload-input]');
+      uploadInput.click();
     },
     isFileExist: function (fileName) {
       let vm = this;
