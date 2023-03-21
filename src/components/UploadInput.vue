@@ -14,7 +14,7 @@
         >
           Dosya Seç
         </button>
-        <span upload-file-text>Seçilmedi</span>
+        <span class="input__selected-file">{{ selectedFile }}</span>
       </div>
       <input
         class="input__core -hidden"
@@ -41,6 +41,8 @@ export default {
     return {
       errorClass: '-error',
       uploadedFiles: [],
+      uploadingFiles: [],
+      selectedFile: 'Seçilmedi',
     };
   },
   props: {
@@ -53,20 +55,12 @@ export default {
     accept: String,
   },
   methods: {
-    validate: function (e) {
-      let element = e.target;
-      let vm = this;
-    },
     error: function (error = true) {
       let vm = this;
       let parentElement = vm.$el;
 
-      if (error) {
-        parentElement.classList.add(vm.errorClass);
-        return;
-      }
-
-      parentElement.classList.remove(vm.errorClass);
+      parentElement.classList.add(vm.errorClass);
+      if (!error) parentElement.classList.remove(vm.errorClass);
     },
     focusInput: function () {
       let uploadInput = document.querySelector('[upload-input]');
@@ -79,16 +73,8 @@ export default {
       status = vm.uploadedFiles.some((item) => item.originalname == fileName);
       return status;
     },
-    checkFileExtension: function (fileName) {
-      const acceptedFileFormats = new RegExp(
-        `^.*\.(doc|DOC|pdf|PDF|docx|DOCX|xls|XLS|xlsx|XLSX|txt|TXT)$`
-      );
-
-      return acceptedFileFormats.test(fileName);
-    },
     getFiles: function (e) {
       let vm = this;
-      let parentElement = vm.$el;
       let element = e.target;
       let files = Object.entries(element.files);
 
@@ -101,10 +87,28 @@ export default {
 
         if (status) return;
 
-        vm.uploadedFiles.push(file);
+        vm.uploadingFiles.push(file);
       });
 
-      uploadFiles(vm.uploadedFiles).then((res) => (vm.uploadedFiles = []));
+      uploadFiles(vm.uploadingFiles).then((res) => {
+        let isMultiple = vm.multiple;
+
+        let uploadedFiles = res;
+        let lastUploadedFile = uploadedFiles.slice(-1)[0];
+
+        uploadedFiles.forEach((file) => {
+          vm.uploadedFiles.push(file);
+        });
+
+        if (isMultiple) {
+          vm.$emit('upload', vm.uploadedFiles);
+        } else {
+          vm.$emit('upload', vm.uploadedFiles.slice(-1));
+        }
+
+        vm.selectedFile = lastUploadedFile.originalname;
+        vm.uploadingFiles = [];
+      });
     },
   },
 };

@@ -16,6 +16,7 @@
         accept=".png,.webp,.jpg,.jpeg"
         label="Marka Logosu"
         required
+        @upload="getUploadedFiles"
       />
       <button class="button form__button" type="submit" form-button="submit">
         marka ekle
@@ -34,6 +35,7 @@ export default {
   data: () => {
     return {
       errorText: 'Boş bırakılamaz!',
+      uploadedFiles: [],
     };
   },
   components: {
@@ -41,8 +43,11 @@ export default {
     UploadInput,
     Form,
   },
-  methods: {},
-  mounted() {},
+  methods: {
+    getUploadedFiles: function (uploadedFiles) {
+      this.uploadedFiles = uploadedFiles;
+    },
+  },
 };
 </script>
 
