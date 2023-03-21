@@ -1,6 +1,6 @@
 <template>
   <main class="login" main>
-    <form class="form login__form" form>
+    <form class="form login__form" form @submit="formSend">
       <Input
         class="form__item"
         type="text"
@@ -24,12 +24,7 @@
         required
         focus
       />
-      <button
-        class="button form__button"
-        type="button"
-        form-button="submit"
-        @click="formSend"
-      >
+      <button class="button form__button" type="submit" form-button="submit">
         giriş yap
       </button>
     </form>
@@ -50,6 +45,14 @@ export default {
   },
   components: {
     Input,
+  },
+  mounted() {
+    const vm = this;
+    const form = document.querySelector('[form]');
+
+    form.submit = () => {
+      vm.formSend();
+    };
   },
   methods: {
     formValidate: function () {
