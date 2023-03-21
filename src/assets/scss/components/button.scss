@@ -1,6 +1,4 @@
 .button {
-  cursor: pointer;
-
   position: relative;
 
   display: block;
@@ -11,19 +9,29 @@
   width: 100%;
 
   color: $dark;
+  text-align: center;
   font-size: 1rem;
-	text-transform: capitalize;
+  text-transform: capitalize;
+  text-decoration: none;
 
   border: 1px solid transparent;
   border-radius: $border-radius;
   background-color: rgba($green, 0.9);
   outline: 0;
 
+  cursor: pointer;
+  user-select: none;
+
   &:hover {
     background-color: rgba($green, 1);
   }
 
   &.-disable {
+    pointer-events: none;
     background-color: $dark-green;
+  }
+
+  &.-fit {
+    width: fit-content;
   }
 }

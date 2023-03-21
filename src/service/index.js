@@ -1,18 +1,29 @@
 const axios = require('axios');
 
-const getUsers = async () => {
-  const response = await axios.get('/api/users');
-  return response.data;
-};
-
-const createUser = async (data) => {
-  const response = await axios.post(`/api/user`, data);
-  return response.data;
-};
-
 const getBrands = async () => {
-  const response = await axios.get(`/api/get-brands`);
+  const response = await axios({
+    method: 'get',
+    url: '/api/brand/get-brands',
+  });
+
   return response.data;
 };
 
-export { createUser, getUsers, getBrands };
+const uploadFiles = async (files) => {
+  let filesToUpload = new FormData();
+
+  Object.entries(files).forEach((file) => {
+    filesToUpload.append('Uploaded File', file[1]);
+  });
+
+  const response = await axios({
+    method: 'post',
+    url: `/api/upload`,
+    data: filesToUpload,
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+
+  return response.data;
+};
+
+export { uploadFiles, getBrands };

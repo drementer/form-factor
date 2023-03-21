@@ -1,9 +1,12 @@
-import HomeView from '../views/HomeView.vue';
+import Empty from '@/views/Empty.vue';
+import Brand from './brand';
 
-export default [
-  {
-    path: '/home',
-    name: 'home',
-    component: HomeView,
+export default {
+  path: '/home',
+	name: 'home',
+  redirect: {
+    name: 'brands',
   },
-];
+  component: Empty,
+  children: [...Brand],
+};

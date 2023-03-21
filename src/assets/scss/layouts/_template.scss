@@ -5,5 +5,10 @@ body {
 }
 
 body {
-	background-color: $dark;
+  background-color: $dark;
+}
+
+main,
+section {
+  width: 100%;
 }
