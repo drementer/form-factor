@@ -92,17 +92,18 @@ export default {
       return data;
     },
     formSend: function () {
-      const isFormValid = this.formValidate();
-      const formData = this.getFormData();
+      const vm = this;
+      const isFormValid = vm.formValidate();
+      const formData = vm.getFormData();
 
-      const userName = this.userName;
-      const password = this.password;
+      const userName = vm.userName;
+      const password = vm.password;
 
       if (userName != formData.userName) return;
       if (password != formData.password) return;
       if (!isFormValid) return;
 
-      this.$router.push({ name: 'home' });
+      vm.$router.push({ name: 'home' });
     },
   },
 };
