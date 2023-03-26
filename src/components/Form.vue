@@ -70,5 +70,10 @@ export default {
     flex-grow: 1;
     flex-basis: 0;
   }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+  }
 }
 </style>

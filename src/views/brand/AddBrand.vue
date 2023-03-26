@@ -37,12 +37,17 @@
         name="imageSeo"
         :max-lenght="140"
         :min-lenght="15"
-				info-text="Marka görseli yüklendiğinde görsel için SEO"
+        info-text="Marka görseli yüklendiğinde görsel için SEO"
         form-item
       />
-      <button class="button form__button" type="submit" form-button="submit">
-        marka ekle
-      </button>
+      <div class="form__buttons">
+				<button class="button form__button" type="reset" form-button="reset">
+					Temizle
+				</button>
+        <button class="button form__button" type="submit" form-button="submit">
+          marka ekle
+        </button>
+      </div>
     </Form>
   </main>
 </template>
