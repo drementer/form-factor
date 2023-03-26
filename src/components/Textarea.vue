@@ -1,27 +1,31 @@
 <template>
-  <div class="input -textarea">
-    <label class="input__label">
+  <div class="textarea">
+    <label class="textarea__label">
       <span>
         {{ label }}
         <span class="-muted" v-if="mutedText">{{ mutedText }}</span>
       </span>
       <textarea
-        class="input__core"
+        class="textarea__core"
         :name="name"
         :value="value"
         :placeholder="placeholder"
         :maxlength="maxLenght"
         :minlength="minLenght"
         :required="required"
-        @input="validate"
+        @input="
+          ($event) => {
+            validate($event), resize($event);
+          }
+        "
         autocomplete="off"
         input
         :autofocus="focus"
       >
       </textarea>
-      <span v-if="errorText" class="input__error">{{ errorText }}</span>
+      <span v-if="errorText" class="textarea__error">{{ errorText }}</span>
     </label>
-    <p v-if="infoText" class="input__info">{{ infoText }}</p>
+    <p v-if="infoText" class="textarea__info">{{ infoText }}</p>
   </div>
 </template>
 
@@ -48,50 +52,37 @@ export default {
   },
   methods: {
     validate: function (e) {
-      let element = e.target;
       let vm = this;
+      let element = e.target;
 
-      /* element.value = element.value.replaceAll(' ', ''); */
-
-      let isOnylNumber = element.hasAttribute('only-number');
-      let isOnlyLetter = element.hasAttribute('only-letter');
       let isRequired = element.hasAttribute('required');
       let isNull = element.value == '';
 
-      if (isOnylNumber) vm.numberMask(element);
-      if (isOnlyLetter) vm.letterMask(element);
-
-      if (isRequired && isNull) {
-        vm.error(true);
-        return;
-      }
-
       vm.error(false);
-    },
-    numberMask: function (element) {
-      element.value = element.value.replace(/[^\d]/g, '');
-    },
-    letterMask: function (element) {
-      element.value = element.value.replace(/[^a-zA-Z]/g, '');
+      if (isRequired && isNull) vm.error(true);
     },
     error: function (error = true) {
       let vm = this;
       let parentElement = vm.$el;
 
-      if (error) {
-        parentElement.classList.add(vm.errorClass);
-        return;
-      }
-
       parentElement.classList.remove(vm.errorClass);
+      if (error) parentElement.classList.add(vm.errorClass);
+    },
+    resize: function (e) {
+      let vm = this;
+      let element = e.target;
+
+      element.style.height = 'auto';
+      element.style.height = element.scrollHeight + 'px';
     },
   },
 };
 </script>
 
 <style lang="scss">
-.input {
+.textarea {
   $this: #{&};
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,10 +112,9 @@ export default {
     margin: 0;
     padding: 0.5em 1em;
 
-    @at-root #{$this}.-error & {
-      color: red;
-      border-color: red;
-    }
+    height: max-content;
+    min-height: 70px !important;
+    max-height: 500px;
 
     color: inherit;
     font-size: 1em;
@@ -133,6 +123,9 @@ export default {
 
     border: 1px solid rgba($light-green, 0.4);
     border-radius: $border-radius;
+
+    resize: none;
+    overflow-y: hidden;
     outline: 0;
 
     &:hover:not(:invalid) {
@@ -144,11 +137,10 @@ export default {
       background-color: rgba($dark-green, 0.5);
     }
 
-    /*     &:invalid:not(:focus) {
+    @at-root #{$this}.-error & {
       color: red;
       border-color: red;
-      background-color: rgba(red, 0.1);
-    } */
+    }
   }
 
   &__error {

@@ -59,22 +59,16 @@ export default {
       let element = e.target;
       let vm = this;
 
-      /* element.value = element.value.replaceAll(' ', ''); */
-
       let isOnylNumber = element.hasAttribute('only-number');
       let isOnlyLetter = element.hasAttribute('only-letter');
       let isRequired = element.hasAttribute('required');
       let isNull = element.value == '';
 
+      vm.error(false);
+
       if (isOnylNumber) vm.numberMask(element);
       if (isOnlyLetter) vm.letterMask(element);
-
-      if (isRequired && isNull) {
-        vm.error(true);
-        return;
-      }
-
-      vm.error(false);
+      if (isRequired && isNull) vm.error(true);
     },
     numberMask: function (element) {
       element.value = element.value.replace(/[^\d]/g, '');
@@ -86,12 +80,8 @@ export default {
       let vm = this;
       let parentElement = vm.$el;
 
-      if (error) {
-        parentElement.classList.add(vm.errorClass);
-        return;
-      }
-
       parentElement.classList.remove(vm.errorClass);
+      if (error) parentElement.classList.add(vm.errorClass);
     },
   },
 };
