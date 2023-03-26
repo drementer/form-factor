@@ -15,9 +15,14 @@ router.get('/get-brands', (req, res) => {
   let brandFolders = fs.readdirSync(root);
 
   brandFolders.forEach((folder) => {
-    let fileContent = fs.readFileSync(`${root}${folder}${infoFile}`, 'utf8');
-    brands.push(JSON.parse(fileContent));
+    let data = fs.readFileSync(`${root}${folder}${infoFile}`, 'utf8');
+    data = JSON.parse(data);
+    let isActive = data.active;
+    if (isActive) brands.push(data);
   });
+
+  return res.json(brands);
+});
 
   res.json(brands);
 });
