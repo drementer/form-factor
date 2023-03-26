@@ -12,6 +12,7 @@
         label="Marka İsmi"
         name="brandName"
         :error-text="errorText"
+        :mutedText="mutedText"
         form-item
         focus
         required
@@ -20,7 +21,6 @@
         class="form__item"
         accept=".png,.webp,.jpg,.jpeg"
         label="Marka Görseli"
-        :mutedText="mutedText"
         @upload="getUploadedFiles"
       />
 			<Input
@@ -28,7 +28,6 @@
         type="text"
         label="Görsel SEO"
         name="imageSeo"
-        :mutedText="mutedText"
 				info-text="Marka görseli yüklendiğinde görsel için SEO"
         form-item
       />
@@ -51,7 +50,7 @@ export default {
   data: () => {
     return {
       errorText: 'Boş bırakılamaz!',
-      mutedText: 'Opsiyonel',
+      mutedText: 'Zorunlu',
       uploadedFiles: [],
     };
   },
