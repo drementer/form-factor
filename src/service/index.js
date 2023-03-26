@@ -9,6 +9,16 @@ const getBrands = async () => {
   return response.data;
 };
 
+const addBrand = async (data) => {
+  const response = await axios({
+    method: 'post',
+    url: '/api/brand/add-brand',
+    data: data,
+  });
+
+  return response.data;
+};
+
 const uploadFiles = async (files) => {
   let filesToUpload = new FormData();
 
@@ -26,4 +36,4 @@ const uploadFiles = async (files) => {
   return response.data;
 };
 
-export { uploadFiles, getBrands };
+export { uploadFiles, getBrands, addBrand };
