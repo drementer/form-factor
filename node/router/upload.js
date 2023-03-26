@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const router = express.Router();
 const multer = require('multer');
 
-const uploadsPath = '../uploads';
+const uploadsPath = '../uploads/brands/';
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
