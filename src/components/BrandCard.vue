@@ -3,8 +3,6 @@
     <img
       v-if="image"
       :src="require('../../uploads/brands/' + image)"
-      :alt="imageAlt"
-      :title="imageAlt"
       class="brand-card__logo"
     />
   </div>
@@ -14,13 +12,29 @@
 export default {
   name: 'Input',
   data: () => {
-    return {};
+    return {
+      image: '',
+    };
   },
   props: {
-    image: String,
-    imageAlt: String,
+    brand: Object,
   },
-  methods: {},
+  methods: {
+    getImage: function () {
+      let vm = this;
+
+      let brand = vm.brand;
+      let files = brand.files;
+      let file = files.slice(-1)[0];
+
+      vm.image = '';
+      if (!file) return;
+      vm.image = file.filename;
+    },
+  },
+  mounted() {
+    this.getImage();
+  },
 };
 </script>
 

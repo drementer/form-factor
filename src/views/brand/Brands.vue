@@ -9,8 +9,8 @@
       <BrandCard
         v-for="brand in brands"
         class="brands__card"
+				:brand="brand"
         :key="brand.id"
-        :image="getImage(brand.files)"
       />
     </div>
 
@@ -45,11 +45,6 @@ export default {
       getBrands()
         .then((res) => (this.brands = res))
         .catch((err) => (this.brands = false));
-    },
-    getImage: function (files) {
-      let file = files.slice(-1)[0];
-      let image = file.filename;
-      return image;
     },
   },
   mounted() {
