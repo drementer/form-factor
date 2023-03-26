@@ -24,7 +24,11 @@
         required
         focus
       />
-      <button class="button form__button" type="submit" form-button="submit">
+      <button
+        class="button form__button"
+        type="submit"
+        form-button="submit"
+      >
         giriş yap
       </button>
     </form>
