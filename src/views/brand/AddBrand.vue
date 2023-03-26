@@ -17,6 +17,13 @@
         focus
         required
       />
+			<Textarea
+        class="form__item"
+        label="Marka Açıklaması"
+        name="brandDescription"
+				:min-lenght=15
+        form-item
+      />
       <UploadInput
         class="form__item"
         accept=".png,.webp,.jpg,.jpeg"
@@ -42,6 +49,7 @@
 import Form from '@/components/Form.vue';
 import Input from '@/components/Input.vue';
 import UploadInput from '@/components/UploadInput.vue';
+import Textarea from '@/components/Textarea.vue';
 
 import { addBrand } from '@/service/index.js';
 
@@ -58,6 +66,7 @@ export default {
     Input,
     UploadInput,
     Form,
+		Textarea
   },
   mounted() {
     const vm = this;
