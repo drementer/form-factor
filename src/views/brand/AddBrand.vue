@@ -17,12 +17,12 @@
         focus
         required
       />
-			<Textarea
+      <Textarea
         class="form__item"
         label="Marka Açıklaması"
         name="brandDescription"
-				:max-lenght="140"
-				:min-lenght=15
+        :max-lenght="140"
+        :min-lenght="15"
         form-item
       />
       <UploadInput
@@ -31,11 +31,12 @@
         label="Marka Görseli"
         @upload="getUploadedFiles"
       />
-			<Input
+      <Textarea
         class="form__item"
-        type="text"
         label="Görsel SEO"
         name="imageSeo"
+        :max-lenght="140"
+        :min-lenght="15"
 				info-text="Marka görseli yüklendiğinde görsel için SEO"
         form-item
       />
@@ -67,7 +68,7 @@ export default {
     Input,
     UploadInput,
     Form,
-		Textarea
+    Textarea,
   },
   mounted() {
     const vm = this;
