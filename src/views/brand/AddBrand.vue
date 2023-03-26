@@ -14,16 +14,23 @@
         :error-text="errorText"
         form-item
         focus
-        only-letter
         required
       />
       <UploadInput
         class="form__item"
         accept=".png,.webp,.jpg,.jpeg"
-        label="Marka Logosu"
+        label="Marka Görseli"
         :mutedText="mutedText"
         @upload="getUploadedFiles"
-				multiple
+      />
+			<Input
+        class="form__item"
+        type="text"
+        label="Görsel SEO"
+        name="imageSeo"
+        :mutedText="mutedText"
+				info-text="Marka görseli yüklendiğinde görsel için SEO"
+        form-item
       />
       <button class="button form__button" type="submit" form-button="submit">
         marka ekle
