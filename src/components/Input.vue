@@ -59,7 +59,7 @@ export default {
       let element = e.target;
       let vm = this;
 
-      element.value = element.value.replaceAll(' ', '');
+      /* element.value = element.value.replaceAll(' ', ''); */
 
       let isOnylNumber = element.hasAttribute('only-number');
       let isOnlyLetter = element.hasAttribute('only-letter');
