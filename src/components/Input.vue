@@ -108,7 +108,7 @@ export default {
   padding: 0;
 
   color: $white;
-  font-size: 1.2rem;
+  font-size: 1.125rem;
 
   .-muted {
     opacity: 0.5;
@@ -178,6 +178,7 @@ export default {
     padding: 0;
 
     font-size: 0.8em;
+    opacity: 0.8;
   }
 }
 </style>
