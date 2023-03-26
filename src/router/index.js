@@ -10,7 +10,7 @@ import Error from './error';
 const routes = [
   {
     path: '/',
-		name: 'home',
+    name: 'home',
     redirect: {
       name: 'login',
     },

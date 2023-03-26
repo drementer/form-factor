@@ -4,8 +4,8 @@
       v-if="image"
       :src="require('../../uploads/brands/' + image)"
       class="brand-card__logo"
-			:alt="imageAlt"
-			:title="imageTitle"
+      :alt="imageAlt"
+      :title="imageTitle"
     />
   </div>
 </template>
@@ -16,8 +16,8 @@ export default {
   data: () => {
     return {
       image: '',
-			imageAlt: '',
-			imageTitle: '',
+      imageAlt: '',
+      imageTitle: '',
     };
   },
   props: {
