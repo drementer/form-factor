@@ -24,11 +24,24 @@ router.get('/get-brands', (req, res) => {
   return res.json(brands);
 });
 
-  res.json(brands);
-});
+router.post('/add-brand', (req, res) => {
+  let data = req.body;
+  let fileId = Date.now();
+  let folderPath = './data/brands/' + fileId + '/';
+  let fileName = 'info.json';
+  let fullPath = folderPath + fileName;
+  let isFileActive = true;
 
-router.get('/add-brand', (req, res) => {
-  res.json('Naber');
+  data.id = fileId;
+  data.active = isFileActive;
+  data = JSON.stringify(data);
+
+  fs.mkdirSync(folderPath, { recursive: true });
+  fs.writeFile(fullPath, data, (err) => {
+    if (err) throw err;
+  });
+
+  return res.json({ status: 'succes' });
 });
 
 module.exports = router;
