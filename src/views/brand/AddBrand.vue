@@ -21,6 +21,7 @@
         class="form__item"
         label="Marka Açıklaması"
         name="brandDescription"
+				:max-lenght="140"
 				:min-lenght=15
         form-item
       />
