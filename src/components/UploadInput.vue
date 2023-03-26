@@ -18,7 +18,6 @@
       </div>
       <input
         class="input__core -hidden"
-        name="files[]"
         type="file"
         :required="required"
         :accept="accept"
