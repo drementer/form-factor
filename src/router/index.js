@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import Home from './home';
+import Brand from './brand';
 import Login from './login';
 import Error from './error';
 
@@ -14,7 +14,7 @@ const routes = [
       name: 'login',
     },
   },
-  Home,
+  Brand,
   Login,
   Error,
 ];

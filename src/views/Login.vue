@@ -107,7 +107,7 @@ export default {
       if (password != formData.password) return;
       if (!isFormValid) return;
 
-      vm.$router.push({ name: 'home' });
+      vm.$router.push({ name: 'brands' });
     },
   },
 };
