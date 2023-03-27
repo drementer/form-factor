@@ -90,7 +90,6 @@ export default {
 
   padding: 0;
 
-  color: $white;
   font-size: 1.125rem;
 
   .-muted {

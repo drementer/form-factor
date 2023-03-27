@@ -62,8 +62,6 @@ export default {
   gap: 1em;
 
   width: fit-content;
-
-  color: $white;
   font-size: 1rem;
 
   &__heading {

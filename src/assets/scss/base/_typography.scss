@@ -28,6 +28,7 @@ $font-scales: (
 ) !default;
 
 html {
+	color: $white;
   font-family: $root-font-family;
   font-size: $root-font-size--mobile;
 
