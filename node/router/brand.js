@@ -6,22 +6,23 @@ const bodyParser = require('body-parser');
 
 const router = express.Router();
 
+const root = './data/brands/';
+const infoFile = 'info.json';
+
 app.use(bodyParser.json());
 
 router.get('/get-brands', (req, res) => {
-  let brands = [];
-  let root = './data/brands/';
-  let infoFile = '/info.json';
-  let brandFolders = fs.readdirSync(root, { withFileTypes: true });
+  const brands = [];
+  const brandFolders = fs.readdirSync(root, { withFileTypes: true });
 
   brandFolders.forEach((folder) => {
-    let isFile = folder.isFile();
+    const isFile = folder.isFile();
     let isActive = false;
 
     if (isFile) return;
 
     let folderName = folder.name;
-    let data = fs.readFileSync(`${root}${folderName}${infoFile}`, 'utf8');
+    let data = fs.readFileSync(`${root}${folderName}/${infoFile}`, 'utf8');
 
     data = JSON.parse(data);
     isActive = data.active;
@@ -33,19 +34,21 @@ router.get('/get-brands', (req, res) => {
 });
 
 router.post('/add-brand', (req, res) => {
-  let data = req.body;
-  let fileId = Date.now();
-  let folderPath = './data/brands/' + fileId + '/';
-  let fileName = 'info.json';
-  let fullPath = folderPath + fileName;
-  let isFileActive = true;
+  const data = req.body;
 
-  data.id = fileId;
-  data.active = isFileActive;
-  data = JSON.stringify(data);
+  const fileId = Date.now();
+  const folderPath = root + fileId + '/';
+  const fullPath = folderPath + infoFile;
+
+  let isFileActive = true;
+  let json = {};
+
+  json.id = fileId;
+  json.active = isFileActive;
+  json = JSON.stringify(data);
 
   fs.mkdirSync(folderPath, { recursive: true });
-  fs.writeFile(fullPath, data, (err) => {
+  fs.writeFile(fullPath, json, (err) => {
     if (err) throw err;
   });
 
