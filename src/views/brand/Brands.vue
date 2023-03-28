@@ -9,7 +9,7 @@
       <BrandCard
         v-for="brand in brands"
         class="brands__card"
-				:brand="brand"
+        :brand="brand"
         :key="brand.id"
       />
     </div>
@@ -71,15 +71,15 @@ export default {
   &__cards {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 1em;
 
-    max-width: 20em;
+    max-width: 40rem;
   }
 
   &__card {
-    flex-basis: calc(50% - (1em / 2));
+    flex-basis: calc(10em - 1rem);
   }
 }
 </style>
