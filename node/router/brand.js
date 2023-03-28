@@ -12,12 +12,20 @@ router.get('/get-brands', (req, res) => {
   let brands = [];
   let root = './data/brands/';
   let infoFile = '/info.json';
-  let brandFolders = fs.readdirSync(root);
+  let brandFolders = fs.readdirSync(root, { withFileTypes: true });
 
   brandFolders.forEach((folder) => {
-    let data = fs.readFileSync(`${root}${folder}${infoFile}`, 'utf8');
+    let isFile = folder.isFile();
+    let isActive = false;
+
+    if (isFile) return;
+
+    let folderName = folder.name;
+    let data = fs.readFileSync(`${root}${folderName}${infoFile}`, 'utf8');
+
     data = JSON.parse(data);
-    let isActive = data.active;
+    isActive = data.active;
+
     if (isActive) brands.push(data);
   });
 
