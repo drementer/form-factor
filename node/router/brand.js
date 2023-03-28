@@ -52,7 +52,7 @@ router.post('/add-brand', (req, res) => {
     if (err) throw err;
   });
 
-  return res.json({ status: 'succes' });
+  return res.json({ status: 'succes', brandId: fileId });
 });
 
 module.exports = router;
