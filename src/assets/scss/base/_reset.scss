@@ -20,27 +20,27 @@
 }
 
 /**
- * 2. Change the line height.
- * 3. Breaks words to prevent overflow.
- * 4. Use a 4-space tab width.
- * 5. Remove the grey highlight on links in iOS.
- * 6. Prevent adjustments of font size after orientation changes in iOS.
+ * 1. Change the line height.
+ * 2. Breaks words to prevent overflow.
+ * 3. Use a 4-space tab width.
+ * 4. Remove the grey highlight on links in iOS.
+ * 5. Prevent adjustments of font size after orientation changes in iOS.
  */
 html {
   scroll-behavior: smooth;
 
-  line-height: 1.5; /* 2 */
+  line-height: 1.5; /* 1 */
 
-  overflow-wrap: break-word; /* 3 */
+  overflow-wrap: break-word; /* 2 */
 
-  tab-size: 4; /* 4 */
+  tab-size: 4; /* 3 */
 
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 5 */
-  -webkit-tap-highlight-color: transparent; /* 5 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 4 */
+  -webkit-tap-highlight-color: transparent; /* 4 */
 
-  text-size-adjust: 100%; /* 6 */
-  -webkit-text-size-adjust: 100%; /* 6 */
-  -ms-text-size-adjust: 100%; /* 6 */
+  text-size-adjust: 100%; /* 5 */
+  -webkit-text-size-adjust: 100%; /* 5 */
+  -ms-text-size-adjust: 100%; /* 5 */
 
   text-rendering: optimizeLegibility !important;
   -moz-osx-font-smoothing: grayscale !important;
