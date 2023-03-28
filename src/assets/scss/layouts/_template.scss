@@ -3,12 +3,8 @@ body {
   width: 100vw;
 }
 
-html {
-  max-height: calc(100vh - (100vh - 100%));
-}
-
 body {
-  height: 100%;
+  min-height: 100vh;
   background-color: $dark;
 }
 
