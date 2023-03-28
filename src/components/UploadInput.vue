@@ -14,7 +14,7 @@
         >
           Dosya Seç
         </button>
-        <span class="input__selected-file">{{ selectedFile }}</span>
+        <span class="input__selected-file -truncate">{{ selectedFile }}</span>
       </div>
       <input
         class="input__core -hidden"
