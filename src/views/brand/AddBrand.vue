@@ -41,10 +41,10 @@
         form-item
       />
       <div class="form__buttons">
-				<button class="button form__button" type="reset" form-button="reset">
+				<button class="button form__button -wide" type="reset" form-button="reset">
 					Temizle
 				</button>
-        <button class="button form__button" type="submit" form-button="submit">
+        <button class="button form__button -wide" type="submit" form-button="submit">
           marka ekle
         </button>
       </div>
