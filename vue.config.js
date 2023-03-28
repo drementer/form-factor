@@ -5,7 +5,7 @@ module.exports = {
     loaderOptions: {
       scss: {
         implementation: require('node-sass'),
-        additionalData: `@import "~@/assets/scss/main.scss";`,
+        additionalData: `@import "~@/assets/scss/_include.scss";`,
       },
     },
   },
