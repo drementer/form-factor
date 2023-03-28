@@ -40,12 +40,11 @@ router.post('/add-brand', (req, res) => {
   const folderPath = root + fileId + '/';
   const fullPath = folderPath + infoFile;
 
-  let isFileActive = true;
-  let json = {};
+  let json = data;
 
   json.id = fileId;
-  json.active = isFileActive;
-  json = JSON.stringify(data);
+  json.active = true;
+  json = JSON.stringify(json);
 
   fs.mkdirSync(folderPath, { recursive: true });
   fs.writeFile(fullPath, json, (err) => {
