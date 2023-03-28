@@ -2,17 +2,17 @@ img:not([alt]) {
   outline: 1px solid $red;
 }
 
-.-hidden {
-  display: none !important;
-}
-
 .container {
   width: calc(100% - 2rem);
   max-width: 85.5rem;
   margin-inline: auto;
 }
 
-.truncate {
+.-hidden {
+  display: none !important;
+}
+
+.-truncate {
   @include truncate();
 }
 
@@ -37,7 +37,7 @@ img:not([alt]) {
  * 1. Needed in WebKit-based browsers because of an implementation bug;
  *    See: https://code.google.com/p/chromium/issues/detail?id=457146
  */
-.hide-text {
+.-hide-text {
   overflow: hidden;
   padding: 0; /* 1 */
   text-indent: 101%;
@@ -48,7 +48,7 @@ img:not([alt]) {
  * Hide element while making it readable for screen readers
  * Shamelessly borrowed from HTML5Boilerplate
  */
-.visually-hidden {
+.-visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
