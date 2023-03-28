@@ -35,6 +35,7 @@
   overflow: hidden;
   display: -webkit-box;
   text-overflow: ellipsis;
+	white-space: nowrap;
   -webkit-line-clamp: $max-line;
   -webkit-box-orient: vertical;
 }
@@ -47,7 +48,8 @@
 /// @param {string} background-color [#fff] - Gradient color
 ///
 @mixin gradient-truncate($max-line: 2, $background-color: #fff) {
-  $font-size: 1em;
+	$font-size: 1em;
+	$root-line-height: 1.5 !default;
   $line-height: $font-size * $root-line-height;
 
   overflow: hidden;
