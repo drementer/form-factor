@@ -14,8 +14,8 @@
       />
     </div>
 
-    <div class="brands__button">
-      <router-link to="/brands/add-brand" class="brand__button button">
+    <div class="brands__buttons">
+      <router-link to="/brands/add-brand" class="brands__button button">
         Yeni Marka Ekle
       </router-link>
     </div>
@@ -80,6 +80,10 @@ export default {
 
   &__card {
     flex-basis: calc(10em - 1rem);
+  }
+
+  &__button {
+    margin: auto;
   }
 }
 </style>
