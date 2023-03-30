@@ -24,7 +24,7 @@
   user-select: none;
 
   &:hover {
-    background-color: rgba($green, 1);
+    background-color: $green;
   }
 
   &.-disable {
