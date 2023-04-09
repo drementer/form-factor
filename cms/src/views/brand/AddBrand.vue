@@ -41,10 +41,18 @@
         form-item
       />
       <div class="form__buttons">
-				<button class="button form__button -wide -ghost" type="reset" form-button="reset">
-					Temizle
-				</button>
-        <button class="button form__button -wide" type="submit" form-button="submit">
+        <button
+          class="button form__button -wide -ghost"
+          type="reset"
+          form-button="reset"
+        >
+          Temizle
+        </button>
+        <button
+          class="button form__button -wide"
+          type="submit"
+          form-button="submit"
+        >
           marka ekle
         </button>
       </div>
@@ -79,7 +87,7 @@ export default {
     const vm = this;
     const form = document.querySelector('[form]');
 
-    form.submit = () => {
+		form.submit = () => {
       vm.formSend();
     };
   },
@@ -91,7 +99,6 @@ export default {
       const vm = this;
       const form = document.querySelector('[form]');
       const formItems = form.querySelectorAll('[form-item]');
-      const submitButton = form.querySelector('[form-button=submit]');
 
       const errorClass = vm.errorClass;
 
@@ -104,12 +111,9 @@ export default {
       );
 
       isFormValid = form.checkValidity();
-
       status = isItemsValid && isFormValid;
 
       if (!status) return false;
-
-      submitButton.classList.remove('-disable');
       return true;
     },
     getFormData: function () {
@@ -128,15 +132,7 @@ export default {
     },
     formSend: function () {
       const vm = this;
-      const isFormValid = vm.formValidate();
       const formData = vm.getFormData();
-
-      const userName = vm.userName;
-      const password = vm.password;
-
-      if (userName != formData.userName) return;
-      if (password != formData.password) return;
-      /* if (!isFormValid) return; */
 
       addBrand(formData);
       vm.$router.push({ path: '/brands' });
