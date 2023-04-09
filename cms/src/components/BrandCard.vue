@@ -2,7 +2,7 @@
   <div class="brand-card">
     <img
       v-if="image"
-      :src="require('../../uploads/brands/' + image)"
+      :src="require('../../../uploads/brands/' + image)"
       class="brand-card__logo"
       :alt="imageAlt"
       :title="imageTitle"
