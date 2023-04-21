@@ -25,7 +25,7 @@
 <script>
 import Input from '@/components/Input.vue';
 import BrandCard from '@/components/BrandCard.vue';
-import { getBrands } from '@/service/index.js';
+import { getBrands } from '@/service/index';
 
 export default {
   name: 'Brands',
