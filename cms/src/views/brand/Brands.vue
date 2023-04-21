@@ -6,12 +6,13 @@
       <h3 v-if="brands == null">{{ loadingText }}</h3>
       <h3 v-if="brands == false">{{ brandsNotFound }}</h3>
 
-      <BrandCard
+      <router-link
         v-for="brand in brands"
-        class="brands__card"
-        :brand="brand"
         :key="brand.id"
-      />
+        :to="'/brands/' + brand.id"
+      >
+        <BrandCard class="brands__card" :brand="brand" />
+      </router-link>
     </div>
 
     <div class="brands__buttons">
